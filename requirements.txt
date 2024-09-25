@@ -1,2 +1,6 @@
-pyaudio 
-openai==0.28
+pyaudio
+streamlit
+openai>=1.0.0
+pandas>=1.0.0,<2.0.0
+pandasai>=1.0.0
+pandasai[ollama]
