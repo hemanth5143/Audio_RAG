@@ -1,7 +1,8 @@
 from pandasai.llm.local_llm import LocalLLM
-import streamlit as st 
-import pandas as pd 
+import streamlit as st
+import pandas as pd
 from pandasai import SmartDataframe
+from stt import record_audio, transcribe_audio  # Import necessary functions from stt.py
 
 model = LocalLLM(
     api_base="http://localhost:11434/v1",
@@ -17,9 +18,23 @@ if uploaded_file is not None:
     st.write(data.head(3))
 
     df = SmartDataframe(data, config={"llm": model})
-    prompt = st.text_area("Enter your prompt:")
 
-    if st.button("Generate"):
-        if prompt:
-            with st.spinner("Generating response..."):
-                st.write(df.chat(prompt))
+    # Add option for input method after CSV upload
+    input_method = st.radio("Choose input method", ('Type prompt', 'Speak prompt'))
+
+    prompt = ""
+    if input_method == 'Type prompt':
+        prompt = st.text_area("Enter your prompt:")
+    elif input_method == 'Speak prompt':
+        if st.button("Record Audio"):
+            with st.spinner("Listening..."):
+                filename = "recorded_audio.wav"
+                if record_audio(filename):  # Record audio with silence detection
+                    prompt = transcribe_audio(filename)  # Get the transcription after recording
+            if prompt:
+                st.write(f"Transcription: {prompt}")
+                # Automatically generate the response after recording
+                with st.spinner("Generating response..."):
+                    st.write(df.chat(prompt))
+            else:
+                st.error("Failed to transcribe audio.")

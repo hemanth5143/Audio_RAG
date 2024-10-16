@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def record_audio(filename, sample_rate=16000, silence_threshold=500, silence_duration=2.0, min_duration=3.0):
+def record_audio(filename, sample_rate=16000, silence_threshold=300, silence_duration=1.0, min_duration=2.0):
     FORMAT = pyaudio.paInt16
     CHANNELS = 1
     CHUNK = 1024
