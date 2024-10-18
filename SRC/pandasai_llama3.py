@@ -2,7 +2,7 @@ from pandasai.llm.local_llm import LocalLLM
 import streamlit as st
 import pandas as pd
 from pandasai import SmartDataframe
-from stt import record_audio, transcribe_audio  # Import necessary functions from stt.py
+from stt import record_audio_with_vad, transcribe_audio  # Updated import
 
 model = LocalLLM(
     api_base="http://localhost:11434/v1",
@@ -29,8 +29,8 @@ if uploaded_file is not None:
         if st.button("Record Audio"):
             with st.spinner("Listening..."):
                 filename = "recorded_audio.wav"
-                if record_audio(filename):  # Record audio with silence detection
-                    prompt = transcribe_audio(filename)  # Get the transcription after recording
+                if record_audio_with_vad(filename):  # Updated function call
+                    prompt = transcribe_audio(filename)
             if prompt:
                 st.write(f"Transcription: {prompt}")
                 # Automatically generate the response after recording
@@ -38,3 +38,8 @@ if uploaded_file is not None:
                     st.write(df.chat(prompt))
             else:
                 st.error("Failed to transcribe audio.")
+
+    # Handle typed prompts
+    if input_method == 'Type prompt' and prompt:
+        with st.spinner("Generating response..."):
+            st.write(df.chat(prompt))
