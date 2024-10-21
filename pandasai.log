@@ -555,3 +555,2813 @@ result = {'type': 'plot', 'value': 'C:/Users/hsai5/OneDrive/Documents/LLM projec
 TypeError: list indices must be integers or slices, not str
 
 2024-09-25 10:51:13 [ERROR] Pipeline failed on step 6: list indices must be integers or slices, not str
+2024-09-25 14:26:49 [INFO] Question: which country has got more gold medals ?
+ 
+2024-09-25 14:26:49 [INFO] Running PandasAI with local LLM...
+2024-09-25 14:26:49 [INFO] Prompt ID: 25448ea9-9ada-472e-a8b6-32f5e779148c
+2024-09-25 14:26:49 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-09-25 14:26:49 [INFO] Executing Step 0: ValidatePipelineInput
+2024-09-25 14:26:49 [INFO] Executing Step 1: CacheLookup
+2024-09-25 14:26:49 [INFO] Executing Step 2: PromptGeneration
+2024-09-25 14:26:50 [INFO] Using prompt: <dataframe>
+dfs[0]:91x7
+Rank,Country,Country Code,Gold,Silver,Bronze,Total
+13,India,TUN,20,44,1,4
+36,Ireland,PKN,18,1,24,34
+12,Mexico,MOR,9,7,10,65
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ which country has got more gold medals ?
+ 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-09-25 14:26:50 [INFO] Executing Step 3: CodeGenerator
+2024-09-25 14:30:05 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-09-25 14:30:05 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:91x7
+Rank,Country,Country Code,Gold,Silver,Bronze,Total
+13,India,TUN,20,44,1,4
+36,Ireland,PKN,18,1,24,34
+12,Mexico,MOR,9,7,10,65
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ which country has got more gold medals ?
+ 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-09-25 14:30:05 [INFO] Code generated:
+            ```
+            # Import pandas library
+import pandas as pd
+
+# Assuming dfs is already declared as a list of dataframes
+dfs = [...]  # Replace with your actual data
+
+# Initialize variables to store gold medals count for each country
+gold_medals_count = {}
+
+for df in dfs:
+    # Loop through each row (df) in the dataframe
+    for index, row in df.iterrows():
+        # Check if 'Gold' column exists and has a value greater than 0
+        if 'Gold' in row and row['Gold'] > 0:
+            # If country already exists, increment its gold medals count
+            if row['Country'] in gold_medals_count:
+                gold_medals_count[row['Country']] += row['Gold']
+            else:
+                # Initialize the country's gold medals count to this value
+                gold_medals_count[row['Country']] = row['Gold']
+
+# Find the country with the most gold medals
+most_gold_country = max(gold_medals_count, key=gold_medals_count.get)
+
+# Print or store the result as per your requirement
+result = {"type": "string", "value": f"The country with the most gold medals is {most_gold_country}. It has a total of {gold_medals_count[most_gold_country]} gold medals."}
+
+print(result)
+            ```
+            
+2024-09-25 14:30:05 [INFO] Executing Step 4: CachePopulation
+2024-09-25 14:30:05 [INFO] Executing Step 5: CodeCleaning
+2024-09-25 14:30:05 [INFO] 
+Code running:
+```
+gold_medals_count = {}
+for df in dfs:
+    for index, row in df.iterrows():
+        if 'Gold' in row and row['Gold'] > 0:
+            if row['Country'] in gold_medals_count:
+                gold_medals_count[row['Country']] += row['Gold']
+            else:
+                gold_medals_count[row['Country']] = row['Gold']
+most_gold_country = max(gold_medals_count, key=gold_medals_count.get)
+result = {'type': 'string', 'value': f'The country with the most gold medals is {most_gold_country}. It has a total of {gold_medals_count[most_gold_country]} gold medals.'}
+print(result)
+        ```
+2024-09-25 14:30:05 [INFO] Executing Step 6: CodeExecution
+2024-09-25 14:30:05 [INFO] Executing Step 7: ResultValidation
+2024-09-25 14:30:05 [INFO] Answer: {'type': 'string', 'value': 'The country with the most gold medals is United States. It has a total of 40 gold medals.'}
+2024-09-25 14:30:05 [INFO] Executing Step 8: ResultParsing
+2024-10-14 19:01:59 [INFO] Question: which day apple share has reached it's high
+
+2024-10-14 19:01:59 [INFO] Running PandasAI with local LLM...
+2024-10-14 19:01:59 [INFO] Prompt ID: 4f1ceb26-98ea-4c31-8214-a349f22bebed
+2024-10-14 19:01:59 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-14 19:02:00 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-14 19:02:00 [INFO] Executing Step 1: CacheLookup
+2024-10-14 19:02:00 [INFO] Executing Step 2: PromptGeneration
+2024-10-14 19:02:00 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-18,224.92999267578125,0035947166,217.88999938964844,2889196749,7386011862,38052200
+2024-09-13,221.44000244140625,4808028723,224.1300048828125,7917914582,7654464545,36636700
+2024-10-02,215.75,4734829428,216.00999450683597,6169965640,3044853620,48076100
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ which day apple share has reached it's high
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-14 19:02:00 [INFO] Executing Step 3: CodeGenerator
+2024-10-14 19:06:53 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-14 19:06:53 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-18,224.92999267578125,0035947166,217.88999938964844,2889196749,7386011862,38052200
+2024-09-13,221.44000244140625,4808028723,224.1300048828125,7917914582,7654464545,36636700
+2024-10-02,215.75,4734829428,216.00999450683597,6169965640,3044853620,48076100
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ which day apple share has reached it's high
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-14 19:06:53 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+dfs = [pd.read_csv('data.csv')]
+
+# Initialize the highest high and corresponding date
+highest_high = 0
+date_highest_high = ''
+
+for index, row in dfs[0].iterrows():
+    if float(row['High']) > highest_high:
+        highest_high = float(row['High'])
+        date_highest_high = row['Date']
+
+# Find the day when Apple share has reached its high
+result = {'type': 'string', 'value': f'The highest stock price of {date_highest_high} is ${highest_high:.2f}.'}
+
+# Plot a chart if required
+plt.figure(figsize=(10, 6))
+plt.plot(dfs[0]['Date'], dfs[0]['High'])
+plt.title('Apple Stock High Over Time')
+plt.xlabel('Date')
+plt.ylabel('Stock Price (USD)')
+plt.savefig('temp_chart.png')
+
+print(result)
+            ```
+            
+2024-10-14 19:06:53 [INFO] Executing Step 4: CachePopulation
+2024-10-14 19:06:53 [INFO] Executing Step 5: CodeCleaning
+2024-10-14 19:06:53 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-14 19:06:53 [INFO] 
+Code running:
+```
+highest_high = 0
+date_highest_high = ''
+for index, row in dfs[0].iterrows():
+    if float(row['High']) > highest_high:
+        highest_high = float(row['High'])
+        date_highest_high = row['Date']
+result = {'type': 'string', 'value': f'The highest stock price of {date_highest_high} is ${highest_high:.2f}.'}
+plt.figure(figsize=(10, 6))
+plt.plot(dfs[0]['Date'], dfs[0]['High'])
+plt.title('Apple Stock High Over Time')
+plt.xlabel('Date')
+plt.ylabel('Stock Price (USD)')
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+        ```
+2024-10-14 19:06:53 [INFO] Executing Step 6: CodeExecution
+2024-10-14 19:06:53 [INFO] Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2024-10-14 19:06:53 [INFO] Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2024-10-14 19:06:53 [INFO] Executing Step 7: ResultValidation
+2024-10-14 19:06:53 [INFO] Answer: {'type': 'string', 'value': 'The highest stock price of 2024-07-15 is $237.23.'}
+2024-10-14 19:06:53 [INFO] Executing Step 8: ResultParsing
+2024-10-14 19:25:53 [INFO] Question: which day apple share has reached it's high
+2024-10-14 19:25:53 [INFO] Running PandasAI with local LLM...
+2024-10-14 19:25:53 [INFO] Prompt ID: ed0b94ff-7998-46d8-993c-0436eed8bef4
+2024-10-14 19:25:53 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-14 19:25:53 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-14 19:25:53 [INFO] Executing Step 1: CacheLookup
+2024-10-14 19:25:53 [INFO] Executing Step 2: PromptGeneration
+2024-10-14 19:25:53 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-10-08,9496394451,3532593141,1484895408,220.69000244140625,234.54852294921875,32880600
+2024-08-19,6922221945,7703295061,5995831390,229.5399932861328,223.9208068847656,36615400
+2024-08-07,0144150301,0687196692,6796775196,222.3800048828125,220.8500061035156,48201800
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ which day apple share has reached it's high
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-14 19:25:53 [INFO] Executing Step 3: CodeGenerator
+2024-10-14 19:26:05 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2024-10-14 19:26:05 [INFO] Retrying request to /chat/completions in 0.397918 seconds
+2024-10-14 19:26:16 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2024-10-14 19:26:16 [INFO] Retrying request to /chat/completions in 0.773586 seconds
+2024-10-14 19:26:26 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 500 Internal Server Error"
+2024-10-14 19:26:26 [ERROR] Pipeline failed on step 3: Error code: 500 - {'error': {'message': 'exception done_getting_tensors: wrong number of tensors; expected 147, got 146', 'type': 'api_error', 'param': None, 'code': None}}
+2024-10-14 19:33:49 [INFO] Question: what is the max value in apple stock in last 100 days ?
+
+2024-10-14 19:33:49 [INFO] Running PandasAI with local LLM...
+2024-10-14 19:33:49 [INFO] Prompt ID: 8543b8c3-8df3-4c11-beb0-30ad2de9acda
+2024-10-14 19:33:49 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-14 19:33:49 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-14 19:33:49 [INFO] Executing Step 1: CacheLookup
+2024-10-14 19:33:49 [INFO] Executing Step 2: PromptGeneration
+2024-10-14 19:33:49 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-05,8316176454,233.08999633789065,233.08999633789065,213.30999755859372,0131959977,41601300
+2024-10-07,7865259697,230.44000244140625,216.1199951171875,216.2400054931641,9222144628,63516400
+2024-09-25,7613865319,226.94000244140625,217.5399932861328,227.7899932861328,9258592615,30602200
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the max value in apple stock in last 100 days ?
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-14 19:33:49 [INFO] Executing Step 3: CodeGenerator
+2024-10-14 19:37:46 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-14 19:37:46 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-05,8316176454,233.08999633789065,233.08999633789065,213.30999755859372,0131959977,41601300
+2024-10-07,7865259697,230.44000244140625,216.1199951171875,216.2400054931641,9222144628,63516400
+2024-09-25,7613865319,226.94000244140625,217.5399932861328,227.7899932861328,9258592615,30602200
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the max value in apple stock in last 100 days ?
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-14 19:37:46 [INFO] Code generated:
+            ```
+            import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load data
+dfs = [pd.read_csv(str(line), header=None) for line in open('stock_data.csv', 'r').readlines()]
+
+# Find maximum value in last 100 days
+max_value = max(dfs[-1]['Close']) if len(dfs) > 100 else dfs[0]['Close']
+
+result = {"type": "string", "value": f"The maximum value in the last 100 days is {max_value}."}
+
+if result["type"] == "dataframe":
+    df = pd.DataFrame([{"Date": dfs[-1]['Date'], "Max Value": max_value}])
+    result["value"] = df
+
+print(result)
+            ```
+            
+2024-10-14 19:37:46 [INFO] Executing Step 4: CachePopulation
+2024-10-14 19:37:46 [INFO] Executing Step 5: CodeCleaning
+2024-10-14 19:37:46 [INFO] 
+Code running:
+```
+max_value = max(dfs[-1]['Close']) if len(dfs) > 100 else dfs[0]['Close']
+result = {'type': 'string', 'value': f'The maximum value in the last 100 days is {max_value}.'}
+if result['type'] == 'dataframe':
+    df = pd.DataFrame([{'Date': dfs[-1]['Date'], 'Max Value': max_value}])
+    result['value'] = df
+print(result)
+        ```
+2024-10-14 19:37:46 [INFO] Executing Step 6: CodeExecution
+2024-10-14 19:37:46 [INFO] Executing Step 7: ResultValidation
+2024-10-14 19:37:46 [INFO] Answer: {'type': 'string', 'value': 'The maximum value in the last 100 days is 0     227.820007\n1     228.679993\n2     232.979996\n3     227.570007\n4     230.539993\n         ...    \n65    225.770004\n66    229.539993\n67    229.039993\n68    227.550003\n69    231.300003\nName: Close, Length: 70, dtype: float64.'}
+2024-10-14 19:37:46 [INFO] Executing Step 8: ResultParsing
+2024-10-16 14:24:17 [INFO] Question: what day apple has reached it's max value ?
+
+2024-10-16 14:24:17 [INFO] Running PandasAI with local LLM...
+2024-10-16 14:24:17 [INFO] Prompt ID: dc955c1d-0ecd-47bc-8163-9e0f957f751d
+2024-10-16 14:24:17 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-16 14:24:17 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-16 14:24:17 [INFO] Executing Step 1: CacheLookup
+2024-10-16 14:24:18 [INFO] Executing Step 2: PromptGeneration
+2024-10-16 14:24:18 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what day apple has reached it's max value ?
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-16 14:24:18 [INFO] Executing Step 3: CodeGenerator
+2024-10-16 14:29:17 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-16 14:29:17 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what day apple has reached it's max value ?
+
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-16 14:29:17 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load data into a list of DataFrames (dfs)
+dfs = []
+for i in range(3):
+    dfs.append(pd.DataFrame({
+        "Date": ["2024-07-22", "2024-08-30", "2024-09-13"][i],
+        "Open": [225.22999572753003, 224.30000030517578, 230.19000244140625][i],
+        "High": [227.97999572753003, 229.63999389644844, 229.39999938964844][i],
+        "Low": [196.0, 223.08, 224.83][i],
+        "Close": [220.820000732421875, 226.80000030517578, 227.789933212328][i],
+        "Adj Close": [7563083652, 7283677950, 2557138934][i],
+        "Volume": [36766600, 31668000, 5989400][i]
+    }))
+
+# Find the maximum 'Close' value and its corresponding date
+max_close = max([row.iloc[4] for row in dfs])
+max_close_date = [row.loc[row['Close'] == max_close, 'Date'].iloc[0] for row in dfs]
+
+result = {"type": "string", "value": f"Apple reached its maximum value of {max_close} on {max_close_date}."}
+
+# Plot the data
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i].iloc[0]['Date'], dfs[i].iloc[1]['Date'], dfs[i].iloc[2]['Date']], [dfs[i].iloc[0]['Close'], dfs[i].iloc[1]['Close'], dfs[i].iloc[2]['Close']], marker='o', label=f"Day {i+1}")
+plt.xlabel("Date")
+plt.ylabel("Price ($)")
+plt.title("Apple Stock Prices Over Three Days")
+plt.legend()
+plt.savefig('apple_stock_prices.png')
+
+print(result)
+            ```
+            
+2024-10-16 14:29:17 [INFO] Executing Step 4: CachePopulation
+2024-10-16 14:29:17 [INFO] Executing Step 5: CodeCleaning
+2024-10-16 14:29:17 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-16 14:29:17 [INFO] 
+Code running:
+```
+for i in range(3):
+    dfs.append(pd.DataFrame({'Date': ['2024-07-22', '2024-08-30', '2024-09-13'][i], 'Open': [225.22999572753002, 224.3000003051758, 230.19000244140625][i], 'High': [227.97999572753002, 229.63999389644843, 229.39999938964843][i], 'Low': [196.0, 223.08, 224.83][i], 'Close': [220.82000073242187, 226.8000003051758, 227.789933212328][i], 'Adj Close': [7563083652, 7283677950, 2557138934][i], 'Volume': [36766600, 31668000, 5989400][i]}))
+max_close = max([row.iloc[4] for row in dfs])
+max_close_date = [row.loc[row['Close'] == max_close, 'Date'].iloc[0] for row in dfs]
+result = {'type': 'string', 'value': f'Apple reached its maximum value of {max_close} on {max_close_date}.'}
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i].iloc[0]['Date'], dfs[i].iloc[1]['Date'], dfs[i].iloc[2]['Date']], [dfs[i].iloc[0]['Close'], dfs[i].iloc[1]['Close'], dfs[i].iloc[2]['Close']], marker='o', label=f'Day {i + 1}')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.title('Apple Stock Prices Over Three Days')
+plt.legend()
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+        ```
+2024-10-16 14:29:17 [INFO] Executing Step 6: CodeExecution
+2024-10-16 14:29:18 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\frame.py", line 664, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 493, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 118, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 656, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+
+2024-10-16 14:29:18 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-16 14:29:18 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-16 14:29:18 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-16 14:29:18 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ what day apple has reached it's max value ?
+
+
+You generated this python code:
+for i in range(3):
+    dfs.append(pd.DataFrame({'Date': ['2024-07-22', '2024-08-30', '2024-09-13'][i], 'Open': [225.22999572753002, 224.3000003051758, 230.19000244140625][i], 'High': [227.97999572753002, 229.63999389644843, 229.39999938964843][i], 'Low': [196.0, 223.08, 224.83][i], 'Close': [220.82000073242187, 226.8000003051758, 227.789933212328][i], 'Adj Close': [7563083652, 7283677950, 2557138934][i], 'Volume': [36766600, 31668000, 5989400][i]}))
+max_close = max([row.iloc[4] for row in dfs])
+max_close_date = [row.loc[row['Close'] == max_close, 'Date'].iloc[0] for row in dfs]
+result = {'type': 'string', 'value': f'Apple reached its maximum value of {max_close} on {max_close_date}.'}
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i].iloc[0]['Date'], dfs[i].iloc[1]['Date'], dfs[i].iloc[2]['Date']], [dfs[i].iloc[0]['Close'], dfs[i].iloc[1]['Close'], dfs[i].iloc[2]['Close']], marker='o', label=f'Day {i + 1}')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.title('Apple Stock Prices Over Three Days')
+plt.legend()
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\frame.py", line 664, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 493, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 118, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 656, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+
+
+Fix the python code above and return the new python code:
+2024-10-16 14:29:18 [INFO] Executing Step 1: CodeGenerator
+2024-10-16 14:31:03 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-16 14:31:32 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-16 14:36:03 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-16 14:36:03 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ what day apple has reached it's max value ?
+
+
+You generated this python code:
+for i in range(3):
+    dfs.append(pd.DataFrame({'Date': ['2024-07-22', '2024-08-30', '2024-09-13'][i], 'Open': [225.22999572753002, 224.3000003051758, 230.19000244140625][i], 'High': [227.97999572753002, 229.63999389644843, 229.39999938964843][i], 'Low': [196.0, 223.08, 224.83][i], 'Close': [220.82000073242187, 226.8000003051758, 227.789933212328][i], 'Adj Close': [7563083652, 7283677950, 2557138934][i], 'Volume': [36766600, 31668000, 5989400][i]}))
+max_close = max([row.iloc[4] for row in dfs])
+max_close_date = [row.loc[row['Close'] == max_close, 'Date'].iloc[0] for row in dfs]
+result = {'type': 'string', 'value': f'Apple reached its maximum value of {max_close} on {max_close_date}.'}
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i].iloc[0]['Date'], dfs[i].iloc[1]['Date'], dfs[i].iloc[2]['Date']], [dfs[i].iloc[0]['Close'], dfs[i].iloc[1]['Close'], dfs[i].iloc[2]['Close']], marker='o', label=f'Day {i + 1}')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.title('Apple Stock Prices Over Three Days')
+plt.legend()
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\frame.py", line 664, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 493, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 118, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 656, in _extract_index
+    raise ValueError("If using all scalar values, you must pass an index")
+ValueError: If using all scalar values, you must pass an index
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-16 14:36:03 [INFO] Code generated:
+            ```
+            Python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+dfs = [pd.DataFrame(columns=['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'])]
+
+dfs[0]['Date'] = ['20-07-22', '20-08-30', '20-09-13']
+dfs[0]['Open'] = [225.22, 224.3, 230.19]
+dfs[0]['High'] = [227.97, 229.64, 229.40]
+dfs[0]['Low'] = [196.0, 223.08, 224.83]
+dfs[0]['Close'] = [220.8, 226.8, 227.78]
+dfs[0]['Adj Close'] = [75630836, 72836795, 25571389]
+dfs[0]['Volume'] = [36766000, 31668000, 5989400]
+
+max_close = max(dfs[0]['Close'])
+max_close_date = dfs[0][dfs[0]['Close'] == max_close].index[0]
+
+result = f'Apple reached its maximum value of {max_close} on {max_close_date}.'
+
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i]['Date'].iloc[0], dfs[i]['Date'].iloc[1], dfs[i]['Date'].iloc[2]], [dfs[i]['Close'].iloc[0], dfs[i]['Close'].iloc[1], dfs[i]['Close'].iloc[2]], marker='o', label=f'Day {i + 1}')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.title('Apple Stock Prices Over Three Days')
+plt.legend()
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+            ```
+            
+2024-10-16 14:36:03 [INFO] Executing Step 2: CodeCleaning
+2024-10-16 14:36:03 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-16 14:36:03 [INFO] 
+Code running:
+```
+Python
+dfs[0]['Date'] = ['20-07-22', '20-08-30', '20-09-13']
+dfs[0]['Open'] = [225.22, 224.3, 230.19]
+dfs[0]['High'] = [227.97, 229.64, 229.4]
+dfs[0]['Low'] = [196.0, 223.08, 224.83]
+dfs[0]['Close'] = [220.8, 226.8, 227.78]
+dfs[0]['Adj Close'] = [75630836, 72836795, 25571389]
+dfs[0]['Volume'] = [36766000, 31668000, 5989400]
+max_close = max(dfs[0]['Close'])
+max_close_date = dfs[0][dfs[0]['Close'] == max_close].index[0]
+result = f'Apple reached its maximum value of {max_close} on {max_close_date}.'
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i]['Date'].iloc[0], dfs[i]['Date'].iloc[1], dfs[i]['Date'].iloc[2]], [dfs[i]['Close'].iloc[0], dfs[i]['Close'].iloc[1], dfs[i]['Close'].iloc[2]], marker='o', label=f'Day {i + 1}')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.title('Apple Stock Prices Over Three Days')
+plt.legend()
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+        ```
+2024-10-16 14:36:03 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+2024-10-16 14:36:03 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-16 14:36:03 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-16 14:36:03 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-16 14:36:03 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ what day apple has reached it's max value ?
+
+
+You generated this python code:
+Python
+dfs[0]['Date'] = ['20-07-22', '20-08-30', '20-09-13']
+dfs[0]['Open'] = [225.22, 224.3, 230.19]
+dfs[0]['High'] = [227.97, 229.64, 229.4]
+dfs[0]['Low'] = [196.0, 223.08, 224.83]
+dfs[0]['Close'] = [220.8, 226.8, 227.78]
+dfs[0]['Adj Close'] = [75630836, 72836795, 25571389]
+dfs[0]['Volume'] = [36766000, 31668000, 5989400]
+max_close = max(dfs[0]['Close'])
+max_close_date = dfs[0][dfs[0]['Close'] == max_close].index[0]
+result = f'Apple reached its maximum value of {max_close} on {max_close_date}.'
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i]['Date'].iloc[0], dfs[i]['Date'].iloc[1], dfs[i]['Date'].iloc[2]], [dfs[i]['Close'].iloc[0], dfs[i]['Close'].iloc[1], dfs[i]['Close'].iloc[2]], marker='o', label=f'Day {i + 1}')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.title('Apple Stock Prices Over Three Days')
+plt.legend()
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+2024-10-16 14:36:03 [INFO] Executing Step 1: CodeGenerator
+2024-10-16 14:40:10 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-16 14:40:10 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ what day apple has reached it's max value ?
+
+
+You generated this python code:
+Python
+dfs[0]['Date'] = ['20-07-22', '20-08-30', '20-09-13']
+dfs[0]['Open'] = [225.22, 224.3, 230.19]
+dfs[0]['High'] = [227.97, 229.64, 229.4]
+dfs[0]['Low'] = [196.0, 223.08, 224.83]
+dfs[0]['Close'] = [220.8, 226.8, 227.78]
+dfs[0]['Adj Close'] = [75630836, 72836795, 25571389]
+dfs[0]['Volume'] = [36766000, 31668000, 5989400]
+max_close = max(dfs[0]['Close'])
+max_close_date = dfs[0][dfs[0]['Close'] == max_close].index[0]
+result = f'Apple reached its maximum value of {max_close} on {max_close_date}.'
+plt.figure(figsize=(10, 6))
+for i in range(len(dfs)):
+    plt.plot([dfs[i]['Date'].iloc[0], dfs[i]['Date'].iloc[1], dfs[i]['Date'].iloc[2]], [dfs[i]['Close'].iloc[0], dfs[i]['Close'].iloc[1], dfs[i]['Close'].iloc[2]], marker='o', label=f'Day {i + 1}')
+plt.xlabel('Date')
+plt.ylabel('Price ($)')
+plt.title('Apple Stock Prices Over Three Days')
+plt.legend()
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-16 14:40:10 [INFO] Code generated:
+            ```
+            import pandas as pd
+
+# Parse the DataFrame
+df = pd.read_csv(StringIO("Date,Open,High,Low,Close,Adj Close,Volume\n20-07-22,225.22,227.97,196.0,220.8,75630836,36766\n20-08-30,224.3,229.64,223.08,226.8,72836795,31668\n20-09-13,230.19,229.4,224.83,227.78,25571389,5989"))
+
+# Find the maximum close value and its corresponding date
+max_close = df['Close'].max()
+max_close_date = df.loc[df['Close'] == max_close, 'Date'].iloc[0]
+
+print(f'Apple reached its maximum value of {max_close} on {max_close_date}.')
+            ```
+            
+2024-10-16 14:40:10 [INFO] Executing Step 2: CodeCleaning
+2024-10-16 14:40:10 [INFO] 
+Code running:
+```
+df = pd.read_csv(StringIO("""Date,Open,High,Low,Close,Adj Close,Volume
+20-07-22,225.22,227.97,196.0,220.8,75630836,36766
+20-08-30,224.3,229.64,223.08,226.8,72836795,31668
+20-09-13,230.19,229.4,224.83,227.78,25571389,5989"""))
+max_close = df['Close'].max()
+max_close_date = df.loc[df['Close'] == max_close, 'Date'].iloc[0]
+print(f'Apple reached its maximum value of {max_close} on {max_close_date}.')
+        ```
+2024-10-16 14:40:10 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'StringIO' is not defined
+
+2024-10-16 14:40:10 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-16 14:40:10 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-16 14:40:10 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-16 14:40:10 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ what day apple has reached it's max value ?
+
+
+You generated this python code:
+df = pd.read_csv(StringIO("""Date,Open,High,Low,Close,Adj Close,Volume
+20-07-22,225.22,227.97,196.0,220.8,75630836,36766
+20-08-30,224.3,229.64,223.08,226.8,72836795,31668
+20-09-13,230.19,229.4,224.83,227.78,25571389,5989"""))
+max_close = df['Close'].max()
+max_close_date = df.loc[df['Close'] == max_close, 'Date'].iloc[0]
+print(f'Apple reached its maximum value of {max_close} on {max_close_date}.')
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'StringIO' is not defined
+
+
+Fix the python code above and return the new python code:
+2024-10-16 14:40:10 [INFO] Executing Step 1: CodeGenerator
+2024-10-16 14:42:47 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-16 14:42:47 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22999572753903,227.97999572753903,196.0,220.82000732421875,7563083652,36766600
+2024-08-30,224.3000030517578,229.6499938964844,223.08999633789065,226.8000030517578,7283677950,31668000
+2024-09-13,230.19000244140625,229.3999938964844,224.8300018310547,227.7899932861328,2557138934,59894900
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ what day apple has reached it's max value ?
+
+
+You generated this python code:
+df = pd.read_csv(StringIO("""Date,Open,High,Low,Close,Adj Close,Volume
+20-07-22,225.22,227.97,196.0,220.8,75630836,36766
+20-08-30,224.3,229.64,223.08,226.8,72836795,31668
+20-09-13,230.19,229.4,224.83,227.78,25571389,5989"""))
+max_close = df['Close'].max()
+max_close_date = df.loc[df['Close'] == max_close, 'Date'].iloc[0]
+print(f'Apple reached its maximum value of {max_close} on {max_close_date}.')
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'StringIO' is not defined
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-16 14:42:47 [INFO] Code generated:
+            ```
+            from io import StringIO
+import pandas as pd
+
+df = pd.read_csv(StringIO("""
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-22,225.22,227.97,196.0,220.8,75630836,36766
+2024-08-30,224.3,229.64,223.08,226.8,72836795,31668
+2024-09-13,230.19,229.4,224.83,227.78,25571389,5989
+"""))
+
+max_close = df['Close'].max()
+max_close_date = df.loc[df['Close'] == max_close, 'Date'].iloc[0]
+print(f'Apple reached its maximum value of {max_close} on {max_close_date}.')
+            ```
+            
+2024-10-16 14:42:47 [INFO] Executing Step 2: CodeCleaning
+2024-10-16 14:42:47 [ERROR] Pipeline failed on step 2: Code shouldn't use 'os', 'io' or 'chr', 'b64decode' functions as this could lead to malicious code execution.
+2024-10-16 14:42:47 [ERROR] Pipeline failed on step 6: Code shouldn't use 'os', 'io' or 'chr', 'b64decode' functions as this could lead to malicious code execution.
+2024-10-16 15:03:02 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-16 15:03:02 [INFO] Question: On what day Apple has reached its maximum value?
+2024-10-16 15:03:02 [INFO] Running PandasAI with local LLM...
+2024-10-16 15:03:02 [INFO] Prompt ID: b4d0c43f-b5e7-4f6d-90c8-6f11112c5e1a
+2024-10-16 15:03:02 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-16 15:03:02 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-16 15:03:02 [INFO] Executing Step 1: CacheLookup
+2024-10-16 15:03:02 [INFO] Executing Step 2: PromptGeneration
+2024-10-16 15:03:03 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-09-10,230.27999877929688,229.82000732421875,6838610779,222.66000366210935,221.69000244140625,47161100
+2024-08-27,220.57000732421875,229.5200042724609,0232663643,225.7700042724609,216.7899932861328,45519300
+2024-09-06,227.3000030517578,227.3699951171875,1088762443,222.7700042724609,224.52999877929688,61777600
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ On what day Apple has reached its maximum value?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-16 15:03:03 [INFO] Executing Step 3: CodeGenerator
+2024-10-16 15:06:30 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-16 15:06:30 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-09-10,230.27999877929688,229.82000732421875,6838610779,222.66000366210935,221.69000244140625,47161100
+2024-08-27,220.57000732421875,229.5200042724609,0232663643,225.7700042724609,216.7899932861328,45519300
+2024-09-06,227.3000030517578,227.3699951171875,1088762443,222.7700042724609,224.52999877929688,61777600
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ On what day Apple has reached its maximum value?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-16 15:06:30 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize an empty list to hold DataFrames
+dfs = []
+
+# Read the data into a DataFrame and append it to the list
+for i in range(3):
+    df = pd.read_csv(f"data{i+1}.csv")
+    dfs.append(df)
+
+# Calculate the maximum Close value across all days
+max_close_value = max(dfs[0]['Close'])
+
+# Find the day when Apple reached its maximum value (Close)
+max_close_date = dfs[0].loc[(dfs[0]['Close'] == max_close_value), 'Date'].iloc[0]
+
+# Print the result
+result = {"type": "string", "value": f"On {max_close_date}, Apple reached its maximum value of {max_close_value}."}
+
+# If you want to plot a chart, you can uncomment the code below:
+# plt.figure(figsize=(8, 6))
+# dfs[0]['Close'].plot(kind='line', title='Apple Stock Price')
+# plt.xlabel('Date')
+# plt.ylabel('Price (USD)')
+# plt.grid(True)
+# plt.savefig('temp_chart.png')
+
+print(result)
+            ```
+            
+2024-10-16 15:06:30 [INFO] Executing Step 4: CachePopulation
+2024-10-16 15:06:30 [INFO] Executing Step 5: CodeCleaning
+2024-10-16 15:06:30 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-16 15:06:30 [INFO] 
+Code running:
+```
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-16 15:06:30 [INFO] Executing Step 6: CodeExecution
+2024-10-16 15:06:30 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+2024-10-16 15:06:30 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-16 15:06:30 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-16 15:06:30 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-16 15:06:30 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-09-10,230.27999877929688,229.82000732421875,6838610779,222.66000366210935,221.69000244140625,47161100
+2024-08-27,220.57000732421875,229.5200042724609,0232663643,225.7700042724609,216.7899932861328,45519300
+2024-09-06,227.3000030517578,227.3699951171875,1088762443,222.7700042724609,224.52999877929688,61777600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+
+Fix the python code above and return the new python code:
+2024-10-16 15:06:30 [INFO] Executing Step 1: CodeGenerator
+2024-10-16 15:10:19 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-16 15:10:19 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-09-10,230.27999877929688,229.82000732421875,6838610779,222.66000366210935,221.69000244140625,47161100
+2024-08-27,220.57000732421875,229.5200042724609,0232663643,225.7700042724609,216.7899932861328,45519300
+2024-09-06,227.3000030517578,227.3699951171875,1088762443,222.7700042724609,224.52999877929688,61777600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-16 15:10:19 [INFO] Code generated:
+            ```
+            dfs = [pd.read_csv(dataframe)]
+
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+            ```
+            
+2024-10-16 15:10:19 [INFO] Executing Step 2: CodeCleaning
+2024-10-16 15:10:19 [INFO] 
+Code running:
+```
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-16 15:10:19 [INFO] Executing Step 7: ResultValidation
+2024-10-16 15:10:19 [INFO] Answer: {'type': 'string', 'value': 'On 2024-07-16, Apple reached its maximum value of 234.82000732421875.'}
+2024-10-16 15:10:19 [INFO] Executing Step 8: ResultParsing
+2024-10-16 15:27:45 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 400 Bad Request"
+2024-10-16 15:30:04 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 400 Bad Request"
+2024-10-16 22:00:17 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 400 Bad Request"
+2024-10-16 22:02:23 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 400 Bad Request"
+2024-10-16 22:04:49 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 400 Bad Request"
+2024-10-18 09:40:59 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 400 Bad Request"
+2024-10-18 09:55:25 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-18 09:55:25 [INFO] Question: On what day Apple has reached its maximum value?
+2024-10-18 09:55:25 [INFO] Running PandasAI with local LLM...
+2024-10-18 09:55:25 [INFO] Prompt ID: 6ede34b8-fa9c-4c4b-928c-9d4824134089
+2024-10-18 09:55:25 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-18 09:55:25 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-18 09:55:25 [INFO] Executing Step 1: CacheLookup
+2024-10-18 09:55:25 [INFO] Using cached response
+2024-10-18 09:55:25 [INFO] Executing Step 2: PromptGeneration
+2024-10-18 09:55:25 [INFO] Executing Step 2: Skipping...
+2024-10-18 09:55:25 [INFO] Executing Step 3: CodeGenerator
+2024-10-18 09:55:25 [INFO] Executing Step 3: Skipping...
+2024-10-18 09:55:25 [INFO] Executing Step 4: CachePopulation
+2024-10-18 09:55:25 [INFO] Executing Step 4: Skipping...
+2024-10-18 09:55:25 [INFO] Executing Step 5: CodeCleaning
+2024-10-18 09:55:25 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-18 09:55:25 [INFO] 
+Code running:
+```
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-18 09:55:25 [INFO] Executing Step 6: CodeExecution
+2024-10-18 09:55:25 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+2024-10-18 09:55:25 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-18 09:55:25 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 09:55:25 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 09:55:26 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-29,225.88999938964844,223.02999877929688,8279792875,2197322241,6641923834,57345900
+2024-08-14,229.97000122070312,225.69000244140625,5460480344,6008763962,9032815315,34044200
+2024-08-01,219.00999450683597,229.5,8410181909,8771701444,0251101899,64710600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+
+Fix the python code above and return the new python code:
+2024-10-18 09:55:26 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 10:00:05 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:00:05 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-29,225.88999938964844,223.02999877929688,8279792875,2197322241,6641923834,57345900
+2024-08-14,229.97000122070312,225.69000244140625,5460480344,6008763962,9032815315,34044200
+2024-08-01,219.00999450683597,229.5,8410181909,8771701444,0251101899,64710600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-18 10:00:05 [INFO] Code generated:
+            ```
+            Python
+import pandas as pd
+
+dfs = [pd.read_csv(io.StringIO(dataframe), index_col=False) for dataframe in dfs]
+
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+            ```
+            
+2024-10-18 10:00:05 [INFO] Executing Step 2: CodeCleaning
+2024-10-18 10:00:05 [INFO] 
+Code running:
+```
+Python
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-18 10:00:05 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+2024-10-18 10:00:05 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-18 10:00:05 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 10:00:05 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 10:00:05 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-29,225.88999938964844,223.02999877929688,8279792875,2197322241,6641923834,57345900
+2024-08-14,229.97000122070312,225.69000244140625,5460480344,6008763962,9032815315,34044200
+2024-08-01,219.00999450683597,229.5,8410181909,8771701444,0251101899,64710600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+Python
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+2024-10-18 10:00:05 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 10:01:39 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:01:39 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-29,225.88999938964844,223.02999877929688,8279792875,2197322241,6641923834,57345900
+2024-08-14,229.97000122070312,225.69000244140625,5460480344,6008763962,9032815315,34044200
+2024-08-01,219.00999450683597,229.5,8410181909,8771701444,0251101899,64710600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+Python
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-18 10:01:39 [INFO] Code generated:
+            ```
+            max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[dfs[0]['Close'] == max_close_value]['Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+            ```
+            
+2024-10-18 10:01:39 [INFO] Executing Step 2: CodeCleaning
+2024-10-18 10:01:39 [INFO] 
+Code running:
+```
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[dfs[0]['Close'] == max_close_value]['Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-18 10:01:39 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+TypeError: list indices must be integers or slices, not Series
+
+2024-10-18 10:01:39 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-18 10:01:39 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 10:01:39 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 10:01:39 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-29,225.88999938964844,223.02999877929688,8279792875,2197322241,6641923834,57345900
+2024-08-14,229.97000122070312,225.69000244140625,5460480344,6008763962,9032815315,34044200
+2024-08-01,219.00999450683597,229.5,8410181909,8771701444,0251101899,64710600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[dfs[0]['Close'] == max_close_value]['Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+TypeError: list indices must be integers or slices, not Series
+
+
+Fix the python code above and return the new python code:
+2024-10-18 10:01:39 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 10:03:31 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:03:31 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-07-29,225.88999938964844,223.02999877929688,8279792875,2197322241,6641923834,57345900
+2024-08-14,229.97000122070312,225.69000244140625,5460480344,6008763962,9032815315,34044200
+2024-08-01,219.00999450683597,229.5,8410181909,8771701444,0251101899,64710600
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[dfs[0]['Close'] == max_close_value]['Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+TypeError: list indices must be integers or slices, not Series
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-18 10:03:31 [INFO] Code generated:
+            ```
+            max_close_value = max(dfs['Close'])
+max_close_date = dfs.loc[dfs['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+            ```
+            
+2024-10-18 10:03:31 [INFO] Executing Step 2: CodeCleaning
+2024-10-18 10:03:31 [INFO] 
+Code running:
+```
+max_close_value = max(dfs['Close'])
+max_close_date = dfs.loc[dfs['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-18 10:03:31 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+TypeError: list indices must be integers or slices, not str
+
+2024-10-18 10:03:31 [ERROR] Pipeline failed on step 6: list indices must be integers or slices, not str
+2024-10-18 10:05:00 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-18 10:05:00 [INFO] Question: On what day Apple has reached its maximum value?
+2024-10-18 10:05:00 [INFO] Running PandasAI with local LLM...
+2024-10-18 10:05:00 [INFO] Prompt ID: 24b77e4c-a846-40cc-bdf5-df6b8e698f09
+2024-10-18 10:05:00 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-18 10:05:00 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-18 10:05:00 [INFO] Executing Step 1: CacheLookup
+2024-10-18 10:05:00 [INFO] Using cached response
+2024-10-18 10:05:00 [INFO] Executing Step 2: PromptGeneration
+2024-10-18 10:05:00 [INFO] Executing Step 2: Skipping...
+2024-10-18 10:05:00 [INFO] Executing Step 3: CodeGenerator
+2024-10-18 10:05:00 [INFO] Executing Step 3: Skipping...
+2024-10-18 10:05:00 [INFO] Executing Step 4: CachePopulation
+2024-10-18 10:05:00 [INFO] Executing Step 4: Skipping...
+2024-10-18 10:05:00 [INFO] Executing Step 5: CodeCleaning
+2024-10-18 10:05:00 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-18 10:05:00 [INFO] 
+Code running:
+```
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-18 10:05:00 [INFO] Executing Step 6: CodeExecution
+2024-10-18 10:05:00 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+2024-10-18 10:05:00 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-18 10:05:00 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 10:05:00 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 10:05:00 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-10-03,2036027026,0682807966,5043606642,224.17999267578125,0931196660,42308700
+2024-08-08,7412495645,2044395061,1489989849,209.82000732421875,3892298382,46414000
+2024-09-25,3644714513,0285398378,9273948800,224.52999877929688,8394853597,48201800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+
+Fix the python code above and return the new python code:
+2024-10-18 10:05:00 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 10:10:26 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:10:26 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-10-03,2036027026,0682807966,5043606642,224.17999267578125,0931196660,42308700
+2024-08-08,7412495645,2044395061,1489989849,209.82000732421875,3892298382,46414000
+2024-09-25,3644714513,0285398378,9273948800,224.52999877929688,8394853597,48201800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-18 10:10:26 [INFO] Code generated:
+            ```
+            Python
+from pandas import DataFrame
+
+dfs = [DataFrame({
+    "Date": ["2024-10-03", "2024-08-08", "2024-09-25"],
+    "Open": [207026, 7412495645, 3644714513],
+    "High": [682807966, 20443950561, 285398378],
+    "Low": [5043606642, 1489989849, 9273948800],
+    "Close": [224.17999267578, 209.82000732421875, 224.52999997792688],
+    "Adj Close": [93.196066, 3892483597, 83948535797],
+    "Volume": [423008700, 46414000, 48201800]
+})]
+
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+            ```
+            
+2024-10-18 10:10:26 [INFO] Executing Step 2: CodeCleaning
+2024-10-18 10:10:26 [INFO] 
+Code running:
+```
+Python
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-18 10:10:26 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+2024-10-18 10:10:26 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-18 10:10:26 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 10:10:26 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 10:10:26 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-10-03,2036027026,0682807966,5043606642,224.17999267578125,0931196660,42308700
+2024-08-08,7412495645,2044395061,1489989849,209.82000732421875,3892298382,46414000
+2024-09-25,3644714513,0285398378,9273948800,224.52999877929688,8394853597,48201800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+Python
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+2024-10-18 10:10:26 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 10:12:22 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:12:22 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-10-03,2036027026,0682807966,5043606642,224.17999267578125,0931196660,42308700
+2024-08-08,7412495645,2044395061,1489989849,209.82000732421875,3892298382,46414000
+2024-09-25,3644714513,0285398378,9273948800,224.52999877929688,8394853597,48201800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+Python
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+NameError: name 'Python' is not defined
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-18 10:12:22 [INFO] Code generated:
+            ```
+            result = "max_close_value = max(dfs[0]['Close'])\n" + \
+         "max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]\n" + \
+         "print('On {} Apple reached its maximum value of {}'.format(max_close_date, max_close_value))"
+            ```
+            
+2024-10-18 10:12:22 [INFO] Executing Step 2: CodeCleaning
+2024-10-18 10:12:22 [INFO] 
+Code running:
+```
+result = "max_close_value = max(dfs[0]['Close'])\n" + """max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+""" + "print('On {} Apple reached its maximum value of {}'.format(max_close_date, max_close_value))"
+        ```
+2024-10-18 10:12:22 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 96, in execute
+    if not OutputValidator.validate_result(result):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\helpers\output_validator.py", line 73, in validate_result
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Result must be in the format of dictionary of type and value
+
+2024-10-18 10:12:22 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-18 10:12:22 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 10:12:22 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 10:12:22 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-10-03,2036027026,0682807966,5043606642,224.17999267578125,0931196660,42308700
+2024-08-08,7412495645,2044395061,1489989849,209.82000732421875,3892298382,46414000
+2024-09-25,3644714513,0285398378,9273948800,224.52999877929688,8394853597,48201800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+result = "max_close_value = max(dfs[0]['Close'])\n" + """max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+""" + "print('On {} Apple reached its maximum value of {}'.format(max_close_date, max_close_value))"
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 96, in execute
+    if not OutputValidator.validate_result(result):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\helpers\output_validator.py", line 73, in validate_result
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Result must be in the format of dictionary of type and value
+
+
+Fix the python code above and return the new python code:
+2024-10-18 10:12:22 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 10:13:55 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:13:55 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-10-03,2036027026,0682807966,5043606642,224.17999267578125,0931196660,42308700
+2024-08-08,7412495645,2044395061,1489989849,209.82000732421875,3892298382,46414000
+2024-09-25,3644714513,0285398378,9273948800,224.52999877929688,8394853597,48201800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+result = "max_close_value = max(dfs[0]['Close'])\n" + """max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+""" + "print('On {} Apple reached its maximum value of {}'.format(max_close_date, max_close_value))"
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 96, in execute
+    if not OutputValidator.validate_result(result):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\helpers\output_validator.py", line 73, in validate_result
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Result must be in the format of dictionary of type and value
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-18 10:13:55 [INFO] Code generated:
+            ```
+            max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+print('On {} Apple reached its maximum value of {}'.format(max_close_date, max_close_value))
+            ```
+            
+2024-10-18 10:13:55 [INFO] Executing Step 2: CodeCleaning
+2024-10-18 10:13:55 [INFO] 
+Code running:
+```
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+print('On {} Apple reached its maximum value of {}'.format(max_close_date, max_close_value))
+        ```
+2024-10-18 10:13:55 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2024-10-18 10:13:55 [ERROR] Pipeline failed on step 6: No result returned
+2024-10-18 10:17:20 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-18 10:17:20 [INFO] Question: On what app has it reached its maximum value?
+2024-10-18 10:17:20 [INFO] Running PandasAI with local LLM...
+2024-10-18 10:17:20 [INFO] Prompt ID: 7b06573d-2414-4200-9c42-f730595f666d
+2024-10-18 10:17:20 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-18 10:17:20 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-18 10:17:20 [INFO] Executing Step 1: CacheLookup
+2024-10-18 10:17:20 [INFO] Executing Step 2: PromptGeneration
+2024-10-18 10:17:20 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-20,199.08999633789065,228.0,6266903220,8859325690,224.74984741210935,46414000
+2024-08-23,231.38999938964844,221.2700042724609,0196777285,9365850819,226.3999938964844,41643800
+2024-08-14,217.5500030517578,229.8600006103516,8785884417,7437433549,231.3000030517578,40687800
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ On what app has it reached its maximum value?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-18 10:17:20 [INFO] Executing Step 3: CodeGenerator
+2024-10-18 10:20:49 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:20:49 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-20,199.08999633789065,228.0,6266903220,8859325690,224.74984741210935,46414000
+2024-08-23,231.38999938964844,221.2700042724609,0196777285,9365850819,226.3999938964844,41643800
+2024-08-14,217.5500030517578,229.8600006103516,8785884417,7437433549,231.3000030517578,40687800
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ On what app has it reached its maximum value?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-18 10:20:49 [INFO] Code generated:
+            ```
+            import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize an empty list to store DataFrames
+dfs = []
+
+# Load the data from a JSON file or any other format
+df1 = pd.DataFrame({
+    "Date": ["2024-08-20", "2024-08-23", "2024-08-14"],
+    "Open": [199.08, 231.38, 217.55],
+    "High": [228.0, 221.27, 229.86],
+    "Low": [99.96, 196.77, 78.59],
+    "Close": [65, 36.58, 49.74],
+    "Adj Close": [224.7, 226.4, 231.3],
+    "Volume": [46,414,000, 40,678,000, 44,614,000]
+})
+
+dfs.append(df1)
+
+# Find the maximum value for a specific column (e.g., 'High')
+max_value = df1['High'].max()
+
+result = {"type": "string", "value": f"The highest value is {max_value}."}
+
+print(result)
+            ```
+            
+2024-10-18 10:20:49 [INFO] Executing Step 4: CachePopulation
+2024-10-18 10:20:49 [INFO] Executing Step 5: CodeCleaning
+2024-10-18 10:20:50 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 10:20:50 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 10:20:50 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-20,199.08999633789065,228.0,6266903220,8859325690,224.74984741210935,46414000
+2024-08-23,231.38999938964844,221.2700042724609,0196777285,9365850819,226.3999938964844,41643800
+2024-08-14,217.5500030517578,229.8600006103516,8785884417,7437433549,231.3000030517578,40687800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what app has it reached its maximum value?
+
+You generated this python code:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize an empty list to store DataFrames
+dfs = []
+
+# Load the data from a JSON file or any other format
+df1 = pd.DataFrame({
+    "Date": ["2024-08-20", "2024-08-23", "2024-08-14"],
+    "Open": [199.08, 231.38, 217.55],
+    "High": [228.0, 221.27, 229.86],
+    "Low": [99.96, 196.77, 78.59],
+    "Close": [65, 36.58, 49.74],
+    "Adj Close": [224.7, 226.4, 231.3],
+    "Volume": [46,414,000, 40,678,000, 44,614,000]
+})
+
+dfs.append(df1)
+
+# Find the maximum value for a specific column (e.g., 'High')
+max_value = df1['High'].max()
+
+result = {"type": "string", "value": f"The highest value is {max_value}."}
+
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 95, in execute
+    code_to_run = self.get_code_to_run(input, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 152, in get_code_to_run
+    code_to_run = self._clean_code(code, context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 515, in _clean_code
+    self._extract_fix_dataframe_redeclarations(node, clean_code_lines)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 420, in _extract_fix_dataframe_redeclarations
+    exec(code, env)
+  File "<string>", line 1, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\frame.py", line 664, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 493, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 118, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 666, in _extract_index
+    raise ValueError("All arrays must be of the same length")
+ValueError: All arrays must be of the same length
+
+
+Fix the python code above and return the new python code:
+2024-10-18 10:20:50 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 10:26:09 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 10:26:09 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-20,199.08999633789065,228.0,6266903220,8859325690,224.74984741210935,46414000
+2024-08-23,231.38999938964844,221.2700042724609,0196777285,9365850819,226.3999938964844,41643800
+2024-08-14,217.5500030517578,229.8600006103516,8785884417,7437433549,231.3000030517578,40687800
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what app has it reached its maximum value?
+
+You generated this python code:
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize an empty list to store DataFrames
+dfs = []
+
+# Load the data from a JSON file or any other format
+df1 = pd.DataFrame({
+    "Date": ["2024-08-20", "2024-08-23", "2024-08-14"],
+    "Open": [199.08, 231.38, 217.55],
+    "High": [228.0, 221.27, 229.86],
+    "Low": [99.96, 196.77, 78.59],
+    "Close": [65, 36.58, 49.74],
+    "Adj Close": [224.7, 226.4, 231.3],
+    "Volume": [46,414,000, 40,678,000, 44,614,000]
+})
+
+dfs.append(df1)
+
+# Find the maximum value for a specific column (e.g., 'High')
+max_value = df1['High'].max()
+
+result = {"type": "string", "value": f"The highest value is {max_value}."}
+
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 95, in execute
+    code_to_run = self.get_code_to_run(input, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 152, in get_code_to_run
+    code_to_run = self._clean_code(code, context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 515, in _clean_code
+    self._extract_fix_dataframe_redeclarations(node, clean_code_lines)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_cleaning.py", line 420, in _extract_fix_dataframe_redeclarations
+    exec(code, env)
+  File "<string>", line 1, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\frame.py", line 664, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 493, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 118, in arrays_to_mgr
+    index = _extract_index(arrays)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\core\internals\construction.py", line 666, in _extract_index
+    raise ValueError("All arrays must be of the same length")
+ValueError: All arrays must be of the same length
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-18 10:26:09 [INFO] Code generated:
+            ```
+            import pandas as pd
+
+# Initialize an empty list to store DataFrames
+dfs = []
+
+# Define the columns and their corresponding values
+data_dict = {
+    "Date": ["20-08-20", "20-08-23", "20-08-14"],
+    "Open": [199.08, 231.38, 217.55],
+    "High": [228.0, 221.27, 229.86],
+    "Low": [99.96, 196.77, 78.59],
+    "Close": [65, 36.58, 49.74],
+    "Adj Close": [224.7, 226.4, 231.3],
+    "Volume": [46414000, 40678000, 44614000]
+}
+
+df = pd.DataFrame(data_dict)
+dfs.append(df)
+
+# Find the maximum value for a specific column (e.g., 'High')
+max_value = df['High'].max()
+
+result = {"type": "string", "value": f"The highest value is {max_value}."}
+print(result)
+            ```
+            
+2024-10-18 10:26:09 [INFO] Executing Step 2: CodeCleaning
+2024-10-18 10:26:09 [INFO] 
+Code running:
+```
+data_dict = {'Date': ['20-08-20', '20-08-23', '20-08-14'], 'Open': [199.08, 231.38, 217.55], 'High': [228.0, 221.27, 229.86], 'Low': [99.96, 196.77, 78.59], 'Close': [65, 36.58, 49.74], 'Adj Close': [224.7, 226.4, 231.3], 'Volume': [46414000, 40678000, 44614000]}
+df = dfs[0]
+dfs.append(df)
+max_value = df['High'].max()
+result = {'type': 'string', 'value': f'The highest value is {max_value}.'}
+print(result)
+        ```
+2024-10-18 10:26:09 [INFO] Executing Step 6: CodeExecution
+2024-10-18 10:26:09 [INFO] Executing Step 7: ResultValidation
+2024-10-18 10:26:09 [INFO] Answer: {'type': 'string', 'value': 'The highest value is 237.22999572753903.'}
+2024-10-18 10:26:09 [INFO] Executing Step 8: ResultParsing
+2024-10-18 14:52:19 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-18 14:52:19 [INFO] Question: On what day Apple has reached its maximum value?
+2024-10-18 14:52:19 [INFO] Running PandasAI with local LLM...
+2024-10-18 14:52:19 [INFO] Prompt ID: 0e6b6ea5-e9f0-441f-9b8b-ed587485a9eb
+2024-10-18 14:52:19 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-18 14:52:19 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-18 14:52:19 [INFO] Executing Step 1: CacheLookup
+2024-10-18 14:52:19 [INFO] Using cached response
+2024-10-18 14:52:19 [INFO] Executing Step 2: PromptGeneration
+2024-10-18 14:52:19 [INFO] Executing Step 2: Skipping...
+2024-10-18 14:52:19 [INFO] Executing Step 3: CodeGenerator
+2024-10-18 14:52:19 [INFO] Executing Step 3: Skipping...
+2024-10-18 14:52:19 [INFO] Executing Step 4: CachePopulation
+2024-10-18 14:52:19 [INFO] Executing Step 4: Skipping...
+2024-10-18 14:52:19 [INFO] Executing Step 5: CodeCleaning
+2024-10-18 14:52:19 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-18 14:52:19 [INFO] 
+Code running:
+```
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+        ```
+2024-10-18 14:52:19 [INFO] Executing Step 6: CodeExecution
+2024-10-18 14:52:19 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+2024-10-18 14:52:19 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-18 14:52:19 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-18 14:52:19 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-18 14:52:19 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-09-23,226.0,228.0,227.47999572753903,5719824641,227.17999267578125,38052200
+2024-08-12,216.07000732421875,229.0,215.6000061035156,0844479674,220.69000244140625,35934600
+2024-07-19,224.3699951171875,213.63999938964844,221.5200042724609,6102281585,227.3699951171875,67180000
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ On what day Apple has reached its maximum value?
+
+You generated this python code:
+for i in range(3):
+    df = pd.read_csv(f'data{i + 1}.csv')
+    dfs.append(df)
+max_close_value = max(dfs[0]['Close'])
+max_close_date = dfs[0].loc[dfs[0]['Close'] == max_close_value, 'Date'].iloc[0]
+result = {'type': 'string', 'value': f'On {max_close_date}, Apple reached its maximum value of {max_close_value}.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 2, in <module>
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\util\_decorators.py", line 331, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 950, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 605, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\parsers\readers.py", line 1735, in _make_engine
+    self.handles = get_handle(
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandas\io\common.py", line 856, in get_handle
+    handle = open(
+FileNotFoundError: [Errno 2] No such file or directory: 'data1.csv'
+
+
+Fix the python code above and return the new python code:
+2024-10-18 14:52:19 [INFO] Executing Step 1: CodeGenerator
+2024-10-18 14:58:42 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-18 14:58:42 [ERROR] Pipeline failed on step 1: No code found in the response
+2024-10-18 14:58:42 [ERROR] Pipeline failed on step 6: No code found in the response
+2024-10-21 12:22:51 [INFO] HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2024-10-21 12:22:51 [INFO] Question: What do you have in hand?
+2024-10-21 12:22:51 [INFO] Running PandasAI with local LLM...
+2024-10-21 12:22:51 [INFO] Prompt ID: 6df9551c-b3b0-4f79-8aa0-58f7d7c65a33
+2024-10-21 12:22:51 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-10-21 12:22:51 [INFO] Executing Step 0: ValidatePipelineInput
+2024-10-21 12:22:51 [INFO] Executing Step 1: CacheLookup
+2024-10-21 12:22:51 [INFO] Executing Step 2: PromptGeneration
+2024-10-21 12:22:51 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-02,9152909453,4729663394,219.00999450683597,220.82000732421875,5938372698,63516400
+2024-09-13,7385667030,4750507975,225.80999755859372,226.3999938964844,1443957373,44155300
+2024-07-15,0690953490,2003311318,221.3300018310547,234.82000732421875,8165141275,46414000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What do you have in hand?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-10-21 12:22:51 [INFO] Executing Step 3: CodeGenerator
+2024-10-21 12:28:43 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-21 12:28:43 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-02,9152909453,4729663394,219.00999450683597,220.82000732421875,5938372698,63516400
+2024-09-13,7385667030,4750507975,225.80999755859372,226.3999938964844,1443957373,44155300
+2024-07-15,0690953490,2003311318,221.3300018310547,234.82000732421875,8165141275,46414000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What do you have in hand?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-10-21 12:28:43 [INFO] Code generated:
+            ```
+            import pandas as pd
+import matplotlib.pyplot as plt
+
+# Initialize dfs (DataFrames) list
+dfs = [
+    pd.DataFrame({
+        'Date': ['2024-08-02', '2024-09-13', '2024-07-15'],
+        'Open': [91529.09453, 73866.7030, 6909.95390],
+        'High': [47296633394, 47505507975, 200331318],
+        'Low': [219.00, 225.80, 221.33],
+        'Close': [220.82, 226.39999, 234.82],
+        'Adj Close': [5938.372698, 14439.57373, 8165.141275],
+        'Volume': [63516400, 44155400, 4641400]
+    })
+]
+
+# Write code here
+result = {}
+
+# Find the highest Close value and corresponding Date
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'type': 'string', 'value': f"The highest close is {highest_close} on {corresponding_date}"})
+
+# Plot the Close price vs Date
+plt.figure(figsize=(10, 6))
+plt.plot(dfs[0].index, dfs[0]['Close'])
+plt.xlabel('Date')
+plt.ylabel('Close Price')
+plt.title('Close Price vs Date')
+plt.savefig('close_price_vs_date.png')
+
+result.update({'type': 'plot', 'value': 'close_price_vs_date.png'})
+
+print(result)
+            ```
+            
+2024-10-21 12:28:43 [INFO] Executing Step 4: CachePopulation
+2024-10-21 12:28:43 [INFO] Executing Step 5: CodeCleaning
+2024-10-21 12:28:43 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-21 12:28:43 [INFO] 
+Code running:
+```
+result = {}
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'type': 'string', 'value': f'The highest close is {highest_close} on {corresponding_date}'})
+plt.figure(figsize=(10, 6))
+plt.plot(dfs[0].index, dfs[0]['Close'])
+plt.xlabel('Date')
+plt.ylabel('Close Price')
+plt.title('Close Price vs Date')
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+result.update({'type': 'plot', 'value': 'C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png'})
+print(result)
+        ```
+2024-10-21 12:28:43 [INFO] Executing Step 6: CodeExecution
+2024-10-21 12:28:44 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+2024-10-21 12:28:44 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2024-10-21 12:28:44 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-21 12:28:44 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-21 12:28:44 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-02,9152909453,4729663394,219.00999450683597,220.82000732421875,5938372698,63516400
+2024-09-13,7385667030,4750507975,225.80999755859372,226.3999938964844,1443957373,44155300
+2024-07-15,0690953490,2003311318,221.3300018310547,234.82000732421875,8165141275,46414000
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ What do you have in hand?
+
+You generated this python code:
+result = {}
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'type': 'string', 'value': f'The highest close is {highest_close} on {corresponding_date}'})
+plt.figure(figsize=(10, 6))
+plt.plot(dfs[0].index, dfs[0]['Close'])
+plt.xlabel('Date')
+plt.ylabel('Close Price')
+plt.title('Close Price vs Date')
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+result.update({'type': 'plot', 'value': 'C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png'})
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+2024-10-21 12:28:44 [INFO] Executing Step 1: CodeGenerator
+2024-10-21 12:32:23 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-21 12:32:23 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-02,9152909453,4729663394,219.00999450683597,220.82000732421875,5938372698,63516400
+2024-09-13,7385667030,4750507975,225.80999755859372,226.3999938964844,1443957373,44155300
+2024-07-15,0690953490,2003311318,221.3300018310547,234.82000732421875,8165141275,46414000
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ What do you have in hand?
+
+You generated this python code:
+result = {}
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'type': 'string', 'value': f'The highest close is {highest_close} on {corresponding_date}'})
+plt.figure(figsize=(10, 6))
+plt.plot(dfs[0].index, dfs[0]['Close'])
+plt.xlabel('Date')
+plt.ylabel('Close Price')
+plt.title('Close Price vs Date')
+plt.savefig('C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png')
+result.update({'type': 'plot', 'value': 'C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png'})
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-21 12:32:23 [INFO] Code generated:
+            ```
+            result = {}
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'string_result': f'The highest close is {highest_close} on {corresponding_date}'})
+result.update({'plot_file_path': 'C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png'})
+print(result)
+            ```
+            
+2024-10-21 12:32:23 [INFO] Executing Step 2: CodeCleaning
+2024-10-21 12:32:23 [INFO] Saving charts to C:\Users\hsai5\OneDrive\Documents\LLM projects\Audio_RAG_pandasAI\exports\charts\temp_chart.png
+2024-10-21 12:32:23 [INFO] 
+Code running:
+```
+result = {}
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'string_result': f'The highest close is {highest_close} on {corresponding_date}'})
+result.update({'plot_file_path': 'C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png'})
+print(result)
+        ```
+2024-10-21 12:32:23 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 96, in execute
+    if not OutputValidator.validate_result(result):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\helpers\output_validator.py", line 73, in validate_result
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Result must be in the format of dictionary of type and value
+
+2024-10-21 12:32:23 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2024-10-21 12:32:23 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-21 12:32:23 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-21 12:32:23 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-02,9152909453,4729663394,219.00999450683597,220.82000732421875,5938372698,63516400
+2024-09-13,7385667030,4750507975,225.80999755859372,226.3999938964844,1443957373,44155300
+2024-07-15,0690953490,2003311318,221.3300018310547,234.82000732421875,8165141275,46414000
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ What do you have in hand?
+
+You generated this python code:
+result = {}
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'string_result': f'The highest close is {highest_close} on {corresponding_date}'})
+result.update({'plot_file_path': 'C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png'})
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 96, in execute
+    if not OutputValidator.validate_result(result):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\helpers\output_validator.py", line 73, in validate_result
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Result must be in the format of dictionary of type and value
+
+
+Fix the python code above and return the new python code:
+2024-10-21 12:32:23 [INFO] Executing Step 1: CodeGenerator
+2024-10-21 12:34:24 [INFO] HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+2024-10-21 12:34:24 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-02,9152909453,4729663394,219.00999450683597,220.82000732421875,5938372698,63516400
+2024-09-13,7385667030,4750507975,225.80999755859372,226.3999938964844,1443957373,44155300
+2024-07-15,0690953490,2003311318,221.3300018310547,234.82000732421875,8165141275,46414000
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ What do you have in hand?
+
+You generated this python code:
+result = {}
+highest_close = dfs[0]['Close'].max()
+corresponding_date = dfs[0][dfs[0]['Close'] == highest_close].index[0]
+result.update({'string_result': f'The highest close is {highest_close} on {corresponding_date}'})
+result.update({'plot_file_path': 'C:/Users/hsai5/OneDrive/Documents/LLM projects/Audio_RAG_pandasAI/exports/charts/temp_chart.png'})
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 96, in execute
+    if not OutputValidator.validate_result(result):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\helpers\output_validator.py", line 73, in validate_result
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Result must be in the format of dictionary of type and value
+
+
+Fix the python code above and return the new python code:
+            
+2024-10-21 12:34:24 [INFO] Code generated:
+            ```
+            result = {"type": "text", "value": f"What I have in hand is a DataFrame with {dfs.shape[0]} rows and {dfs.shape[1]} columns."}
+print(result)
+            ```
+            
+2024-10-21 12:34:24 [INFO] Executing Step 2: CodeCleaning
+2024-10-21 12:34:24 [INFO] 
+Code running:
+```
+result = {'type': 'text', 'value': f'What I have in hand is a DataFrame with {dfs.shape[0]} rows and {dfs.shape[1]} columns.'}
+print(result)
+        ```
+2024-10-21 12:34:24 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'shape'
+
+2024-10-21 12:34:24 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2024-10-21 12:34:24 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2024-10-21 12:34:24 [INFO] Executing Step 0: ErrorPromptGeneration
+2024-10-21 12:34:24 [INFO] Using prompt: <dataframe>
+dfs[0]:70x7
+Date,Open,High,Low,Close,Adj Close,Volume
+2024-08-02,9152909453,4729663394,219.00999450683597,220.82000732421875,5938372698,63516400
+2024-09-13,7385667030,4750507975,225.80999755859372,226.3999938964844,1443957373,44155300
+2024-07-15,0690953490,2003311318,221.3300018310547,234.82000732421875,8165141275,46414000
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ What do you have in hand?
+
+You generated this python code:
+result = {'type': 'text', 'value': f'What I have in hand is a DataFrame with {dfs.shape[0]} rows and {dfs.shape[1]} columns.'}
+print(result)
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+  File "C:\Users\hsai5\anaconda3\envs\myenv\lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 171, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'shape'
+
+
+Fix the python code above and return the new python code:
+2024-10-21 12:34:24 [INFO] Executing Step 1: CodeGenerator
+2024-10-21 13:14:26 [INFO] Retrying request to /chat/completions in 0.411381 seconds

@@ -2,7 +2,7 @@ from pandasai.llm.local_llm import LocalLLM
 import streamlit as st
 import pandas as pd
 from pandasai import SmartDataframe
-from stt import record_audio_with_vad, transcribe_audio  # Updated import
+from stt import record_audio_with_vad, transcribe_audio
 
 model = LocalLLM(
     api_base="http://localhost:11434/v1",
@@ -25,21 +25,20 @@ if uploaded_file is not None:
     prompt = ""
     if input_method == 'Type prompt':
         prompt = st.text_area("Enter your prompt:")
+        if prompt:
+            with st.spinner("Generating response..."):
+                st.write(df.chat(prompt))
     elif input_method == 'Speak prompt':
-        if st.button("Record Audio"):
-            with st.spinner("Listening..."):
-                filename = "recorded_audio.wav"
-                if record_audio_with_vad(filename):  # Updated function call
-                    prompt = transcribe_audio(filename)
-            if prompt:
-                st.write(f"Transcription: {prompt}")
-                # Automatically generate the response after recording
-                with st.spinner("Generating response..."):
-                    st.write(df.chat(prompt))
+        st.write("Recording will start automatically. Speak your prompt...")
+        with st.spinner("Listening..."):
+            filename = "recorded_audio.wav"
+            if record_audio_with_vad(filename):
+                prompt = transcribe_audio(filename)
+                if prompt:
+                    st.write(f"Transcription: {prompt}")
+                    with st.spinner("Generating response..."):
+                        st.write(df.chat(prompt))
+                else:
+                    st.error("Failed to transcribe audio.")
             else:
-                st.error("Failed to transcribe audio.")
-
-    # Handle typed prompts
-    if input_method == 'Type prompt' and prompt:
-        with st.spinner("Generating response..."):
-            st.write(df.chat(prompt))
+                st.error("No audio was recorded.")
